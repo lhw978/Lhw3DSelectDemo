@@ -6,7 +6,7 @@
 #include <cmath>
 #include "openglshader.h"
 #include "camera.h"
-//#define STB_IMAGE_IMPLEMENTATION  //加这个是因为加了这个下面那个头文件才能使用 要不然他的函数就是无法解析的 外部命令
+//#define STB_IMAGE_IMPLEMENTATION  //加这个是因为加了这个下面那个头文件才能使用 要不然他的函数就是 无法解析的 外部命令
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp" 
