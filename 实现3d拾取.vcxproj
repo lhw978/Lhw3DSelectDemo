@@ -148,49 +148,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\SelectObj\SelectObj\gl\GL.H" />
-    <ClInclude Include="..\SelectObj\SelectObj\gl\GLAUX.H" />
-    <ClInclude Include="..\SelectObj\SelectObj\gl\GLU.H" />
-    <ClInclude Include="..\SelectObj\SelectObj\gl\glut.h" />
+    <ClCompile Include="glad.c" />
+    <ClCompile Include="loadTexture.cpp" />
+    <ClCompile Include="mouse.cpp" />
+    <ClCompile Include="picking_texture.cpp" />
+    <ClCompile Include="shader_s.cpp" />
+    <ClCompile Include="stb\stb_vorbis.c" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="shader\modelShader.fs" />
+    <None Include="shader\modelShader.gs" />
+    <None Include="shader\modelShader.vs" />
+    <None Include="shader\pick.fs" />
+    <None Include="shader\pick.vs" />
+    <None Include="shader\simple.fs" />
+    <None Include="shader\simple.vs" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="all.h" />
-    <ClInclude Include="assimp\config.h" />
-    <ClInclude Include="assimp\types.h" />
     <ClInclude Include="camera.h" />
-    <ClInclude Include="glad\glad.h" />
-    <ClInclude Include="GLFW\glfw3.h" />
-    <ClInclude Include="GLFW\glfw3native.h" />
-    <ClInclude Include="glm\common.hpp" />
-    <ClInclude Include="glm\exponential.hpp" />
-    <ClInclude Include="glm\ext.hpp" />
-    <ClInclude Include="glm\fwd.hpp" />
-    <ClInclude Include="glm\geometric.hpp" />
-    <ClInclude Include="glm\glm.hpp" />
-    <ClInclude Include="glm\integer.hpp" />
-    <ClInclude Include="glm\mat2x2.hpp" />
-    <ClInclude Include="glm\mat2x3.hpp" />
-    <ClInclude Include="glm\mat2x4.hpp" />
-    <ClInclude Include="glm\mat3x2.hpp" />
-    <ClInclude Include="glm\mat3x3.hpp" />
-    <ClInclude Include="glm\mat3x4.hpp" />
-    <ClInclude Include="glm\mat4x2.hpp" />
-    <ClInclude Include="glm\mat4x3.hpp" />
-    <ClInclude Include="glm\mat4x4.hpp" />
-    <ClInclude Include="glm\matrix.hpp" />
-    <ClInclude Include="glm\packing.hpp" />
-    <ClInclude Include="glm\trigonometric.hpp" />
-    <ClInclude Include="glm\vec2.hpp" />
-    <ClInclude Include="glm\vec3.hpp" />
-    <ClInclude Include="glm\vec4.hpp" />
-    <ClInclude Include="glm\vector_relational.hpp" />
-    <ClInclude Include="gl\GL.H" />
-    <ClInclude Include="gl\GLAUX.H" />
-    <ClInclude Include="gl\glcorearb.h" />
-    <ClInclude Include="gl\glext.h" />
-    <ClInclude Include="gl\GLU.H" />
-    <ClInclude Include="gl\glut.h" />
-    <ClInclude Include="gl\glxext.h" />
-    <ClInclude Include="gl\khrplatform.h" />
-    <ClInclude Include="gl\wglext.h" />
     <ClInclude Include="left_mouse.h" />
     <ClInclude Include="loadTexture.h" />
     <ClInclude Include="mesh.h" />
@@ -199,47 +180,6 @@
     <ClInclude Include="openglshader.h" />
     <ClInclude Include="picking_texture.h" />
     <ClInclude Include="shader_s.h" />
-    <ClInclude Include="stb\stb_connected_components.h" />
-    <ClInclude Include="stb\stb_c_lexer.h" />
-    <ClInclude Include="stb\stb_divide.h" />
-    <ClInclude Include="stb\stb_ds.h" />
-    <ClInclude Include="stb\stb_dxt.h" />
-    <ClInclude Include="stb\stb_easy_font.h" />
-    <ClInclude Include="stb\stb_herringbone_wang_tile.h" />
-    <ClInclude Include="stb\stb_hexwave.h" />
-    <ClInclude Include="stb\stb_image.h" />
-    <ClInclude Include="stb\stb_image_resize.h" />
-    <ClInclude Include="stb\stb_image_write.h" />
-    <ClInclude Include="stb\stb_include.h" />
-    <ClInclude Include="stb\stb_leakcheck.h" />
-    <ClInclude Include="stb\stb_perlin.h" />
-    <ClInclude Include="stb\stb_rect_pack.h" />
-    <ClInclude Include="stb\stb_sprintf.h" />
-    <ClInclude Include="stb\stb_textedit.h" />
-    <ClInclude Include="stb\stb_tilemap_editor.h" />
-    <ClInclude Include="stb\stb_truetype.h" />
-    <ClInclude Include="stb\stb_voxel_render.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="glad.c" />
-    <ClCompile Include="loadTexture.cpp" />
-    <ClCompile Include="mouse.cpp" />
-    <ClCompile Include="picking_texture.cpp" />
-    <ClCompile Include="shader_s.cpp" />
-    <ClCompile Include="stb\stb_vorbis.c" />
-    <ClCompile Include="源.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="modelShader.fs" />
-    <None Include="modelShader.gs" />
-    <None Include="modelShader.vs" />
-    <None Include="pick.fs" />
-    <None Include="pick.vs" />
-    <None Include="simple.fs" />
-    <None Include="simple.vs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="glm\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
