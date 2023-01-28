@@ -30,15 +30,6 @@
     <ClInclude Include="left_mouse.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="glad\glad.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLFW\glfw3.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GLFW\glfw3native.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -48,192 +39,12 @@
     <ClInclude Include="openglshader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="gl\glut.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="assimp\types.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="assimp\config.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SelectObj\SelectObj\gl\GL.H">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SelectObj\SelectObj\gl\GLAUX.H">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SelectObj\SelectObj\gl\GLU.H">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SelectObj\SelectObj\gl\glut.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\GL.H">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\GLAUX.H">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\glcorearb.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\glext.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\GLU.H">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\glxext.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\khrplatform.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="gl\wglext.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\common.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\exponential.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\ext.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\fwd.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\geometric.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\glm.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\integer.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat2x2.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat2x3.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat2x4.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat3x2.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat3x3.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat3x4.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat4x2.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat4x3.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\mat4x4.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\matrix.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\packing.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\trigonometric.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\vec2.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\vec3.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\vec4.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glm\vector_relational.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_c_lexer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_connected_components.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_divide.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_ds.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_dxt.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_easy_font.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_herringbone_wang_tile.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_hexwave.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_image.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_image_resize.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_image_write.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_include.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_leakcheck.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_perlin.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_rect_pack.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_sprintf.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_textedit.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_tilemap_editor.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_truetype.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stb\stb_voxel_render.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="mesh.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="shader_s.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="loadTexture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="源.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="picking_texture.cpp">
@@ -245,35 +56,22 @@
     <ClCompile Include="stb\stb_vorbis.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="shader_s.cpp">
+    <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="modelShader.fs">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="modelShader.gs">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="modelShader.vs">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="pick.vs">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="pick.fs">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="simple.vs">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="simple.fs">
-      <Filter>资源文件</Filter>
-    </None>
+    <None Include=".gitignore" />
+    <None Include="shader\modelShader.fs" />
+    <None Include="shader\modelShader.gs" />
+    <None Include="shader\modelShader.vs" />
+    <None Include="shader\pick.fs" />
+    <None Include="shader\pick.vs" />
+    <None Include="shader\simple.fs" />
+    <None Include="shader\simple.vs" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="glm\CMakeLists.txt" />

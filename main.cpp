@@ -48,7 +48,7 @@ int main()
 
     // glfw window creation
     // --------------------
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LhwLearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -90,11 +90,7 @@ int main()
     // -----------
     //Model ourModel("C:/Users/Howard Wilson/source/repos/模型载入1/装甲/nanosuit.obj");
     Model ourModel("model/nanosuit.obj2");
-
     pickingtexture.Init(SCR_WIDTH, SCR_HEIGHT);//拾取纹理初始化
-
-
-
 
     hwnd = GetActiveWindow();//获取窗口句柄
     // draw in wireframe

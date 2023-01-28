@@ -152,7 +152,6 @@
     <ClCompile Include="loadTexture.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="picking_texture.cpp" />
-    <ClCompile Include="shader_s.cpp" />
     <ClCompile Include="stb\stb_vorbis.c" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -179,7 +178,6 @@
     <ClInclude Include="mouse.h" />
     <ClInclude Include="openglshader.h" />
     <ClInclude Include="picking_texture.h" />
-    <ClInclude Include="shader_s.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
