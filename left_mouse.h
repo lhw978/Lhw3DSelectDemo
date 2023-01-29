@@ -1,10 +1,11 @@
 #pragma once
-/*创建鼠标的结构体*/
-struct LeftMouse
+
+struct LeftMouse /*鼠标的结构体*/
 {
     bool IsPress;
     int x;
     int y;
+
     LeftMouse()
     {
         IsPress = false;

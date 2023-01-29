@@ -1,4 +1,5 @@
 #include"mouse.h"
+
 float lastX; 
 float lastY; 
 double xposition, yposition;

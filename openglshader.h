@@ -1,14 +1,10 @@
 #pragma once
 #ifndef SHADER_H
 #define SHADER_H
-#include "GLFW/glfw3.h"
-#include "glad/glad.h"
-#include<string>
 #include<fstream>
 #include<sstream>
 #include<iostream>
-#include "glm/glm.hpp"
-//using namespace std;
+//using namespace std;  //不推荐在.h头文件中 使用using，容易导致命名冲突
 class Shader
 {
 public:

@@ -1,9 +1,9 @@
-#include"loadTexture.h"
-//#define STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION  //加这个是因为加了这个下面那个头文件才能使用 要不然他的函数就是无法解析的外部命令
-#include"stb/stb_image.h"
 // utility function for loading a 2D texture from file
 // ---------------------------------------------------
+#include"loadTexture.h"
+#define STB_IMAGE_IMPLEMENTATION  //加这个是因为加了这个下面那个头文件才能使用 要不然他的函数就是无法解析的外部命令
+#include"stb/stb_image.h"
+
 unsigned int loadTexture(char const* path)
 {
 	unsigned int textureID;

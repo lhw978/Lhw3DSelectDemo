@@ -2,29 +2,13 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "glad/glad.h" 
-
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-//#define STB_IMAGE_IMPLEMENTATION
-//#include <stb_image.h>
 #include "assimp/Importer.hpp"
 #include "assimp/scene.h"
 #include "assimp/postprocess.h"
+#include "mesh.h"  //#include "assimp/mesh.h"
+#include "loadTexture.h"
 
-#include "assimp/mesh.h"
-#include "mesh.h"
-#include"openglshader.h"
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <map>
-#include <vector>
-
-#include"loadTexture.h"
-//using namespace std;
-
+//using namespace std; //不推荐在.h头文件中 使用using，容易导致命名冲突
 //unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false);
 
 class Model

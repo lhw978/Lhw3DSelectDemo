@@ -152,7 +152,6 @@
     <ClCompile Include="loadTexture.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="picking_texture.cpp" />
-    <ClCompile Include="stb\stb_vorbis.c" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

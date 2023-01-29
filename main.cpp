@@ -1,19 +1,9 @@
 #include "glad/glad.h"
-#include "GLFW/glfw3.h"
-
 #include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/type_ptr.hpp"
-
-#include"openglshader.h"
-#include"camera.h"
+#include "openglshader.h"
 #include "model.h"
-#include"mouse.h"
-#include"picking_texture.h"
-//#include"stb_image.h"
-//#include"assimp/anim.h"
-//using namespace FileSystem
-#include <iostream>
+#include "mouse.h"
+#include "picking_texture.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -84,12 +74,13 @@ int main()
     Shader ourShader("shader/modelShader.vs","shader/modelShader.fs","shader/modelShader.gs");
     Shader pickShader("shader/pick.vs", "shader/pick.fs"); ///拾取着色器
     Shader simpleShader("shader/simple.vs", "shader/simple.fs");
-    PickingTexture pickingtexture;
 
     // load models
     // -----------
     //Model ourModel("C:/Users/Howard Wilson/source/repos/模型载入1/装甲/nanosuit.obj");
     Model ourModel("model/nanosuit.obj2");
+
+    PickingTexture pickingtexture;
     pickingtexture.Init(SCR_WIDTH, SCR_HEIGHT);//拾取纹理初始化
 
     hwnd = GetActiveWindow();//获取窗口句柄
@@ -115,8 +106,6 @@ int main()
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // don't forget to enable shader before setting uniforms
-
         // view/projection transformations
         /*这里把相应数据存入帧缓冲*/
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -124,15 +113,17 @@ int main()
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
-        pickShader.use();//将复合矩阵传递给拾取着色器，为了在帧缓冲中绘制一次模型场景
+        
+        // don't forget to enable shader before setting uniforms
+        pickShader.use();  //enable shader： 将复合矩阵传递给拾取着色器，为了在帧缓冲中绘制一次模型场景
         pickShader.setMat4("view", view);
         pickShader.setMat4("projection", projection);
         pickShader.setMat4("model", model);
-        pickingtexture.EnableWriting();//开启帧缓存
+        pickingtexture.EnableWriting();  //开启帧缓存
 
         glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
 
-// make sure we clear the framebuffer's content
+        // make sure we clear the framebuffer's content
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         /*绘制一次需要被点击的场景，但不是真正的绘制出来*/
@@ -143,10 +134,7 @@ int main()
             ourModel.Draw(pickShader);//传绘制索引和原始索引进着色器
         }
         glBindVertexArray(0);
-
-
         pickingtexture.DisableWriting();
-
 
         /*本来是点击的模型绘制成红色，现在变成把点击处的三元索引显示出来*/
         if (lm->IsPress == true)
@@ -158,20 +146,16 @@ int main()
         }
 
         /*绘制所有场景*/
-        ourShader.use();
-        ourShader.setMat4("projection", projection);
-        ourShader.setMat4("view", view);
-
-        // render the loaded model
         model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
+
+        ourShader.use();
+        ourShader.setMat4("projection", projection);
+        ourShader.setMat4("view", view);       
         ourShader.setMat4("model", model);
-           
         ourShader.setFloat("time", glfwGetTime());
-
-        ourModel.Draw(ourShader);//这里是绘制模型
-
+        ourModel.Draw(ourShader);  // render the loaded model: 这里是绘制模型
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------

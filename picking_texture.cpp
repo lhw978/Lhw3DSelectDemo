@@ -1,10 +1,12 @@
 #include"picking_texture.h"
+
 PickingTexture::PickingTexture()
 {
 	m_fbo = 0;
 	m_pickingTexture = 0;
 	m_depthTexture = 0;
 }
+
 PickingTexture::~PickingTexture()
 {
     if (m_fbo != 0) {

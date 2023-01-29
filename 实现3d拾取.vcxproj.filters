@@ -53,9 +53,6 @@
     <ClCompile Include="mouse.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="stb\stb_vorbis.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -65,13 +62,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
-    <None Include="shader\modelShader.fs" />
-    <None Include="shader\modelShader.gs" />
-    <None Include="shader\modelShader.vs" />
-    <None Include="shader\pick.fs" />
-    <None Include="shader\pick.vs" />
-    <None Include="shader\simple.fs" />
-    <None Include="shader\simple.vs" />
+    <None Include="shader\modelShader.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader\modelShader.gs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader\modelShader.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader\pick.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader\pick.vs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader\simple.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="shader\simple.vs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="glm\CMakeLists.txt" />

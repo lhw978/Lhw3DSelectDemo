@@ -2,14 +2,9 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "glad/glad.h"
-#include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
-#include <vector>
-
-// Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
-enum Camera_Movement {
+enum Camera_Movement {  // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
 	FORWARD,
 	BACKWARD,
 	LEFT,
@@ -17,15 +12,13 @@ enum Camera_Movement {
 };
 
 // Default camera values
-const float YAW = -90.0f;
-const float PITCH = 0.0f;
+const float YAW = -90.0f;  //偏航角
+const float PITCH = 0.0f;  //俯仰角
 const float SPEED = 2.5f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
 
-
-// An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
-class Camera
+class Camera  // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
 {
 public:
 	// Camera Attributes
@@ -33,17 +26,17 @@ public:
 	glm::vec3 Front;  //摄像机的朝向向量
 	glm::vec3 Up;  //摄像机的头顶向量
 	glm::vec3 Right;  //摄像机的右侧向量
-	glm::vec3 WorldUp;  //时间坐标系的上向量
+	glm::vec3 WorldUp;  //世界坐标系的上向量
 	// Euler Angles
 	float Yaw;  //偏航角
 	float Pitch;  //俯仰角
 	// Camera options
-	float MovementSpeed;  //移动速度
+	float MovementSpeed;      //移动速度
 	float MouseSensitivity;   //这个是灵敏度 再构造函数的时候被初始化了  如果忽略这个值，鼠标移动就会太大了
 	float Zoom;
 
-	// Constructor with vectors
-	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)  //再构造函数这里初始化值
+	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) 
+		: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)  //在构造函数这里初始化值
 	{
 		Position = position;   //设置了位置值
 		WorldUp = up;  //设置了上向量
@@ -51,8 +44,10 @@ public:
 		Pitch = pitch;  //设置了俯仰角
 		updateCameraVectors();  //这里是更新鼠标移动对上向量 右向量 和向前的方向向量的改变
 	}
+
 	// Constructor with scalar values
-	Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)  //这里可以手动设置
+	Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) 
+		: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)  //这里可以手动设置
 	{
 		Position = glm::vec3(posX, posY, posZ);
 		WorldUp = glm::vec3(upX, upY, upZ);
@@ -61,14 +56,12 @@ public:
 		updateCameraVectors();
 	}
 
-	// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
-	glm::mat4 GetViewMatrix()  //这个函数是设置观察矩阵 
+	glm::mat4 GetViewMatrix()  //设置观察矩阵： Returns the view matrix calculated using Euler Angles and the LookAt Matrix
 	{
 		return glm::lookAt(Position, Position + Front, Up);//Position + Front目的是方向向量会跟着摄像机位置而改变
 	}
 
-	/*这里是键盘响应  按动wsad会移动  放入deltatime目的是消除每一帧画面时间不一样对移动速度的影响*/
-	void ProcessKeyboard(Camera_Movement direction, float deltaTime) 
+	void ProcessKeyboard(Camera_Movement direction, float deltaTime)  /*键盘响应：按动wsad会移动  放入deltatime目的是消除每一帧画面时间不一样对移动速度的影响*/
 	{
 		float velocity = MovementSpeed * deltaTime;  //这里是应该移动的位置
 		if (direction == FORWARD)
@@ -80,17 +73,15 @@ public:
 		if (direction == RIGHT)
 			Position += Right * velocity;
 	}
-	/*这里是鼠标响应*/
-	void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
+
+	void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)   	/*鼠标响应*/
 	{
 		xoffset *= MouseSensitivity;//xoffset  yoffset这两个值会在外面的鼠标响应函数里面回调回来 得到的是上一帧到这一帧鼠标再x  y方向的偏移量
 		yoffset *= MouseSensitivity;  //目前还不知道灵敏度的作用有多大
 
 		Yaw += xoffset;  //让偏航角和俯仰角+上偏移量（不知道为什么是角度+偏移量）
 		Pitch += yoffset;
-
-		/*确保视角的抬头低头不会过头 导致视角颠倒*/
-		if (constrainPitch)
+		if (constrainPitch)  /*确保视角的抬头低头不会过头 导致视角颠倒*/
 		{
 			if (Pitch > 89.0f)
 				Pitch = 89.0f;
@@ -101,8 +92,7 @@ public:
 		updateCameraVectors();
 	}
 
-	/*这里是滚轮的响应函数*/
-	void ProcessMouseScroll(float yoffset)
+	void ProcessMouseScroll(float yoffset)	/*滚轮的响应函数*/
 	{
 		if (Zoom >= 1.0f && Zoom <= 45.0f)
 			Zoom -= yoffset;
@@ -113,12 +103,9 @@ public:
 	}
 
 private:
-	// Calculates the front vector from the Camera's (updated) Euler Angles
-	/*这里是更新鼠标移动对视角的改变*/
-	void updateCameraVectors()  
-	{
-		/*这里应该就是由于偏移量很小可以和角度类比 所以直接用偏移量=角度 然后放到这个里面来*/
-		glm::vec3 front;
+	void updateCameraVectors()   /*更新鼠标移动对视角的改变：Calculates the front vector from the Camera's (updated) Euler Angles */
+	{		
+		glm::vec3 front;  /*这里应该就是由于偏移量很小可以和角度类比 所以直接用偏移量=角度 然后放到这个里面来*/
 		front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
 		front.y = sin(glm::radians(Pitch));
 		front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
