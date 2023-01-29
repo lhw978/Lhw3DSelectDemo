@@ -6,6 +6,8 @@
 #include "assimp/postprocess.h"
 #include "mesh.h"  //#include "assimp/mesh.h"
 #include "loadTexture.h"
+#include "left_mouse.h"
+#include "picking_texture.h"
 
 //using namespace std; //不推荐在.h头文件中 使用using，容易导致命名冲突
 //unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false);
@@ -18,7 +20,40 @@ public:
 		loadModel(path);//加载模型的位置
 	}
 
-	void Draw(Shader shader)  //遍历每个网格并调用他们自己的draw函数  draws the model, and thus all its meshes
+	void DrawRenderTarget(PickingTexture& pickingtexture, const Shader& shader, const glm::mat4& model, const glm::mat4& view, const glm::mat4& projection)
+	{
+		pickingtexture.EnableWriting();  //开启帧缓存
+		glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
+
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);   // make sure we clear the framebuffer's content
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		// don't forget to enable shader before setting uniforms
+		shader.use();  //enable shader： 将复合矩阵传递给拾取着色器，为了在帧缓冲中绘制一次模型场景
+		shader.SetMVP(model, view, projection);
+		for (int i = 0; i < 1; i++) /*绘制一次需要被点击的场景，但不是真正的绘制出来*/
+		{   /*每绘制一个模型就传一个对象索引进去*/
+			shader.setInt("gobjectIndex", i);  //传对象索引进着色器
+			Draw(shader);             //传绘制索引和原始索引进着色器
+		}
+
+		glBindVertexArray(0);  //恢复默认
+		pickingtexture.DisableWriting();		
+	}
+
+	void Draw(const Shader& shader, const glm::mat4& model, const glm::mat4& view, const glm::mat4& projection)
+	{
+		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);    // render
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		shader.use();
+		shader.SetMVP(model, view, projection);
+		shader.setFloat("time", glfwGetTime());
+		Draw(shader);  // render the loaded model: 这里是绘制模型
+	}
+
+private:
+	void Draw(const Shader& shader)  //遍历每个网格并调用他们自己的draw函数  draws the model, and thus all its meshes
 	{
 		for (unsigned int i = 0; i < meshes.size(); ++i)
 		{
@@ -27,7 +62,6 @@ public:
 		}
 	}
 
-private:
 	void loadModel(std::string const& path) //加载文件： loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
 	{
 		Assimp::Importer importer;  //声明了Assimp命名空间内的一个Importer， read file via ASSIMP

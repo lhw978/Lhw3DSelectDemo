@@ -31,7 +31,7 @@ public:
         setupMesh();   // now that we have all the required data, set the vertex buffers and its attribute pointers.
     }
   
-    void Draw(Shader& shader)  // render the mesh
+    void Draw(const Shader& shader)  // render the mesh
     {      
         unsigned int diffuseNr = 1, specularNr = 1, normalNr = 1, heightNr = 1;  // bind appropriate textures
         for (unsigned int i = 0; i < textures.size(); ++i)
@@ -54,7 +54,7 @@ public:
        
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);  // draw mesh
-        glBindVertexArray(0);            //»Ö¸´Ä¬ÈÏ       
+        //glBindVertexArray(0);            //»Ö¸´Ä¬ÈÏ       
 
         glActiveTexture(GL_TEXTURE0);    // always good practice to set everything back to defaults once configured.
     }

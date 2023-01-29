@@ -14,38 +14,33 @@ POINT originalPos; //±äÁ¿´æ´¢Êó±ê°´ÏÂÊ±ÄÇ¸öµãµÄ×ø±ê
 POINT currentPos;
 GLfloat pz, px, py;
 GLint realy;
-void mouseMove(GLFWwindow* window, Camera *camera,HWND hwnd,LeftMouse &lf) //»ñÈ¡Êó±ê×ó¼üµã»÷µÄÎ»ÖÃ£¬²¢ÇÒ´«³öÀ´¸ølm
+void mouseMove(GLFWwindow* window, Camera *camera,HWND hwnd,LeftMouse &lf) //»ñÈ¡Êó±ê×ó¼üµã»÷µÄÎ»ÖÃ£¬²¢ÇÒ´«³öÀ´¸ølf
 {
 	int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
 	if (state == GLFW_PRESS)
 	{
-		float xoffset;
-		float yoffset;
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//½«Êó±êÉèÖÃ³É²»ÏÔÊ¾ºÍÏÞÖÆ
-		glfwGetCursorPos(window, &xposition, &yposition);//»ñÈ¡Êó±êÎ»ÖÃ
-		//xoffset = yoffset = 0;
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  //½«Êó±êÉèÖÃ³É²»ÏÔÊ¾ºÍÏÞÖÆ
+		glfwGetCursorPos(window, &xposition, &yposition);           //»ñÈ¡Êó±êÎ»ÖÃ
 		if (firstMouse)
 		{
 			lastX = xposition;
 			lastY = yposition;
 			firstMouse = false;
 		}
-		xoffset = xposition - lastX;
-		yoffset = lastY - yposition; // reversed since y-coordinates go from bottom to top
+		float xoffset = xposition - lastX;
+		float yoffset = lastY - yposition;
 
 		lastX = xposition;
 		lastY = yposition;
-
-		camera->ProcessMouseMovement(xoffset, yoffset);
+		camera->ProcessMouseMovement(xoffset, yoffset);   // reversed since y-coordinates go from bottom to top
 	}
-	if (state == GLFW_RELEASE)
+	else if (state == GLFW_RELEASE)
 	{
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		firstMouse = true;
 	}
 
-	/*×ó¼ü°´ÏÂ»ñÈ¡×ó¼üµÄÎ»ÖÃ*/
-	int stateL = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+	int stateL = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT); 	/*×ó¼ü°´ÏÂ»ñÈ¡×ó¼üµÄÎ»ÖÃ*/
 	if (stateL == GLFW_PRESS)
 	{
 		glfwGetCursorPos(window, &xposition, &yposition);//»ñÈ¡Êó±êÎ»ÖÃ
@@ -53,7 +48,7 @@ void mouseMove(GLFWwindow* window, Camera *camera,HWND hwnd,LeftMouse &lf) //»ñÈ
 		lf.y = yposition;
 		lf.IsPress = true;
 	}
-	if(stateL == GLFW_RELEASE)
+	else if (stateL == GLFW_RELEASE)
 	{
 		lf.IsPress = false;
 	}
