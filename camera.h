@@ -1,7 +1,6 @@
 #pragma once
 #ifndef CAMERA_H
 #define CAMERA_H
-
 #include "glm/gtc/matrix_transform.hpp"
 
 enum Camera_Movement {  // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
@@ -21,20 +20,6 @@ const float ZOOM = 45.0f;
 class Camera  // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
 {
 public:
-	// Camera Attributes
-	glm::vec3 Position; //摄像机的位置
-	glm::vec3 Front;  //摄像机的朝向向量
-	glm::vec3 Up;  //摄像机的头顶向量
-	glm::vec3 Right;  //摄像机的右侧向量
-	glm::vec3 WorldUp;  //世界坐标系的上向量
-	// Euler Angles
-	float Yaw;  //偏航角
-	float Pitch;  //俯仰角
-	// Camera options
-	float MovementSpeed;      //移动速度
-	float MouseSensitivity;   //这个是灵敏度 再构造函数的时候被初始化了  如果忽略这个值，鼠标移动就会太大了
-	float Zoom;
-
 	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) 
 		: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)  //在构造函数这里初始化值
 	{
@@ -56,9 +41,11 @@ public:
 		updateCameraVectors();
 	}
 
+	float GetZoom() {	return Zoom;  }
+
 	glm::mat4 GetViewMatrix()  //设置观察矩阵： Returns the view matrix calculated using Euler Angles and the LookAt Matrix
 	{
-		return glm::lookAt(Position, Position + Front, Up);//Position + Front目的是方向向量会跟着摄像机位置而改变
+		return glm::lookAt(Position, Position + Front, Up);  //Position + Front目的是方向向量会跟着摄像机位置而改变
 	}
 
 	void ProcessKeyboard(Camera_Movement direction, float deltaTime)  /*键盘响应：按动wsad会移动  放入deltatime目的是消除每一帧画面时间不一样对移动速度的影响*/
@@ -114,5 +101,19 @@ private:
 		Right = glm::normalize(glm::cross(Front, WorldUp));  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
 		Up = glm::normalize(glm::cross(Right, Front));
 	}
+
+    // Camera Attributes
+    glm::vec3 Position; //摄像机的位置
+    glm::vec3 Front;  //摄像机的朝向向量
+    glm::vec3 Up;  //摄像机的头顶向量
+    glm::vec3 Right;  //摄像机的右侧向量
+    glm::vec3 WorldUp;  //世界坐标系的上向量
+    // Euler Angles
+    float Yaw;  //偏航角
+    float Pitch;  //俯仰角
+    // Camera options
+    float MovementSpeed;      //移动速度
+    float MouseSensitivity;   //这个是灵敏度 再构造函数的时候被初始化了  如果忽略这个值，鼠标移动就会太大了
+	float Zoom;
 };
 #endif

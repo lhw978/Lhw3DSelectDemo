@@ -1,6 +1,5 @@
 #ifndef MESH_H
 #define MESH_H
-
 #include <vector>
 //using namespace std;  //不推荐在.h头文件中 使用using，容易导致命名冲突
 
@@ -24,11 +23,6 @@ struct Texture {
 
 class Mesh {
 public:  
-    std::vector<Vertex>       vertices;  // mesh Data
-    std::vector<unsigned int> indices;
-    std::vector<Texture>      textures;
-    unsigned int VAO;
-
     Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
     {
         this->vertices = vertices;
@@ -69,16 +63,16 @@ private:
     void setupMesh()  // initializes all the buffer objects/arrays
     {    
         glGenVertexArrays(1, &VAO);    // create buffers/arrays
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &EBO);
-
         glBindVertexArray(VAO);   
+
+        glGenBuffers(1, &VBO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);     //顶点数据： load data into vertex buffers
         // A great thing about structs is that their memory layout is sequential for all its items.
         // The effect is that we can simply pass a pointer to the struct and it translates perfectly to a glm::vec3/2 array which
         // again translates to 3/2 floats which translates to a byte array.
         glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
+        glGenBuffers(1, &EBO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);  //索引数据
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
@@ -100,13 +94,17 @@ private:
      
         glEnableVertexAttribArray(5);
         glVertexAttribIPointer(5, 4, GL_INT, sizeof(Vertex), (void*)offsetof(Vertex, m_BoneIDs));   // ids
-
      
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_Weights));   // weights
         glBindVertexArray(0);     //恢复默认
     }
 
+    std::vector<Vertex>       vertices;  // mesh Data
+    std::vector<unsigned int> indices;
+    std::vector<Texture>      textures;
+
+    unsigned int VAO;
     unsigned int VBO, EBO;  // render data 
 };
 #endif

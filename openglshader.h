@@ -5,10 +5,10 @@
 #include<sstream>
 #include<iostream>
 //using namespace std;  //不推荐在.h头文件中 使用using，容易导致命名冲突
+
 class Shader
 {
 public:
-	unsigned int ID;
 	// constructor generates the shader on the fly
 	// ------------------------------------------------------------------------
 	Shader(std::string vertexPath = "D:\\vertexShader.txt", std::string  fragmentPath = "D:\\fragmentShader.txt", const char* geometryPath = nullptr)//这里设置了默认参数值，如果在构造的时候不填入参数 则是默认的参数
@@ -185,5 +185,7 @@ private:
 			}
 		}
 	}
+
+	unsigned int ID;
 };
 #endif

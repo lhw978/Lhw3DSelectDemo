@@ -10,11 +10,11 @@ GLdouble modelview1[16], projection1[16];
 GLint viewport1[4];
 GLdouble mvmatrix[16], projmatrix[16];
 GLdouble wx, wy, wz, wwx, wwy, wwz;
-POINT originalPos;//变量存储鼠标按下时那个点的坐标
+POINT originalPos; //变量存储鼠标按下时那个点的坐标
 POINT currentPos;
 GLfloat pz, px, py;
 GLint realy;
-void mouseMove(GLFWwindow* window, Camera *camera,HWND hwnd,LeftMouse &lf)
+void mouseMove(GLFWwindow* window, Camera *camera,HWND hwnd,LeftMouse &lf) //获取鼠标左键点击的位置，并且传出来给lm
 {
 	int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
 	if (state == GLFW_PRESS)

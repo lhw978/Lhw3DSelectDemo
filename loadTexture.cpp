@@ -40,6 +40,7 @@ unsigned int loadTexture(char const* path)
 
 	return textureID;
 }
+
 unsigned int loadCubemap(std::vector<std::string> faces)
 {
 	unsigned int textureID;
@@ -73,6 +74,7 @@ unsigned int loadCubemap(std::vector<std::string> faces)
 
 	return textureID;
 }
+
 unsigned int TextureFromFile(const char* path, const std::string& directory)
 {
 	std::string filename = std::string(path);

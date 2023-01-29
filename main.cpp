@@ -100,7 +100,7 @@ int main()
         // input
         // -----
         processInput(window);
-        mouseMove(window, camerax, hwnd,*lm);//这里获取了鼠标左键点击的位置，并且传出来给lm
+        mouseMove(window, camerax, hwnd,*lm);  //这里获取了鼠标左键点击的位置，并且传出来给lm
         // render
         // ------
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
@@ -108,7 +108,7 @@ int main()
 
         // view/projection transformations
         /*这里把相应数据存入帧缓冲*/
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.GetZoom()), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
